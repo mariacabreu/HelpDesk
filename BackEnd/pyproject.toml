@@ -1,0 +1,9 @@
+[project]
+name = "fast-helpdesk"
+version = "0.1.0"
+description = ""
+authors = [
+    { name = "João Vítor", email = "mjoaooliveira7891@gmail.com" },
+    { name = "Maria Clara", email = "" },
+    { name = "Pedro Matias", email = "" }
+]
