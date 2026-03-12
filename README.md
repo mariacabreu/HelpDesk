@@ -1,9 +1,39 @@
+# OBS: depois de ter feito o passo a passo a partir de (# 📌 HelpDesk),
+# sempre que for rodar o código vá para o terminal aberto pelo Downloads
+# ou onde está a pasta, já com o MySQL aberto, e digite:
+
+cd HelpDesk\BackEnd
+
+# Depois
+
+.venv\Scripts\activate
+
+# Se ativar certo vai aparecer assim no terminal, como no exemplo:
+
+(.venv) C:\Users\joaoo\Downloads\HelpDesk\BackEnd>
+
+# Depois é só rodar a API
+
+uvicorn HELPDESK_API.app:app --reload
+
+# LocalHost FastApi
+
+http://127.0.0.1:8000/docs
+
+# Banco de Dados
+
+CREATE DATABASE BDD_SWIFTDESK;
+
+USE BDD_SWIFTDESK;
+
+SHOW DATABASES;
+
 # 📌 HelpDesk
 
 Projeto de sistema HelpDesk desenvolvido utilizando **FastAPI**.
 
 ## 🚀 FastAPI
-Framework moderno e rápido para criação de APIs com Python.  
+Framework moderno e rápido para criação de APIs com Python.
 Ele permite criar aplicações web de forma simples, com alta performance e documentação automática.
 
 ---
@@ -207,3 +237,74 @@ SessionLocal = sessionmaker(
 # Todas as classes que representam tabelas devem herdar de Base
 Base = declarative_base()
 ```
+📁 config
+
+Configurações do sistema.
+Ex: conexão com o banco de dados.
+
+📁 model
+
+Representa as tabelas do banco.
+Define campos, tipos e enums.
+Equivalente ao Entity do Spring Boot.
+
+📁 dto
+
+Controla dados que entram e saem da API.
+
+Request DTO → dados que o cliente envia
+
+Response DTO → dados que a API retorna
+
+📁 repository
+
+Camada que acessa o banco de dados.
+Faz consultas, salvar, deletar, buscar.
+
+Equivalente ao JpaRepository.
+
+📁 service
+
+Onde ficam as regras de negócio.
+
+Exemplo:
+
+validar email duplicado
+
+definir login = email
+
+📁 controller
+
+Camada das rotas da API.
+
+Exemplo:
+
+GET /funcionarios
+POST /funcionarios
+DELETE /funcionarios
+
+Recebe requisição e chama o service.
+
+📁 exception
+
+Trata erros globais da API.
+
+Exemplo:
+
+email já cadastrado
+
+erro interno
+
+📄 routers.py
+
+Centraliza todas as rotas do sistema.
+
+📄 app.py
+
+Arquivo principal da aplicação.
+
+inicia o FastAPI
+
+conecta banco
+
+registra rotas

@@ -1,13 +1,13 @@
 from fastapi import FastAPI
+from HELPDESK_API.routers import router
+from HELPDESK_API.config.database import Base, engine
+from HELPDESK_API.exception.global_exception import add_exception_handlers
 
 app = FastAPI()
 
+Base.metadata.create_all(bind=engine)
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+app.include_router(router)
 
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
+# REGISTRA TRATAMENTO GLOBAL DE ERROS
+add_exception_handlers(app)
